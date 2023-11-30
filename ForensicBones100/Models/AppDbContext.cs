@@ -17,8 +17,10 @@ namespace ForensicBones100.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            // Exemplo de configuração adicional
-            // modelBuilder.Entity<Usuario>().ToTable("Usuarios");
+            modelBuilder.Entity<Relatorio>()
+        .HasMany(r => r.InventariosEsqueleto)
+        .WithOne(i => i.Relatorio)
+        .HasForeignKey(i => i.RelatorioId);
         }
     }
 }
