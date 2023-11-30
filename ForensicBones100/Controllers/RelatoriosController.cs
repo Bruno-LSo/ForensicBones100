@@ -34,8 +34,12 @@ namespace ForensicBones100.Controllers
             }
 
             var relatorio = await _context.Relatorios
-                .Include(r => r.Usuario)
-                .FirstOrDefaultAsync(m => m.RelatorioId == id);
+        .Include(r => r.Usuario) // Mantém a inclusão do usuário
+        .Include(r => r.InventariosEsqueleto) // Inclui a lista de InventariosEsqueleto
+        .Include(r => r.InventarioCranio) // Inclui a lista de InventarioCranio
+        .Include(r => r.MarcadoresCranio) // Inclui a lista de MarcadoresCranio
+        .FirstOrDefaultAsync(m => m.RelatorioId == id);
+
             if (relatorio == null)
             {
                 return NotFound();
