@@ -33,5 +33,6 @@ namespace ForensicBones100.Models
         public virtual List<InventarioEsqueleto> InventariosEsqueleto { get; set; }
         public virtual List<InventarioCranio> InventarioCranio { get; set; }
         public virtual List<MarcadoresCranio> MarcadoresCranio { get; set; }
+
     }
 }

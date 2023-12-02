@@ -1,42 +1,86 @@
 ﻿@model ForensicBones100.Models.Relatorio
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h1>Details</h1>
+<!-- ... Seções anteriores da View ... -->
 
 <div>
-    <h4>Relatorio</h4>
+    <h4>Inventário do Esqueleto</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Codigo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Codigo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Observacoes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Observacoes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Usuario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Usuario.Email)
-        </dd>
-    </dl>
+    @foreach (var inventarioEsqueleto in Model.InventariosEsqueleto)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => inventarioEsqueleto.FotoEsqueleto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => inventarioEsqueleto.FotoEsqueleto)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => inventarioEsqueleto.ObservacoesEsq)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => inventarioEsqueleto.ObservacoesEsq)
+            </dd>
+
+            <!-- Adicione outras propriedades do InventarioEsqueleto que você deseja exibir -->
+        </dl>
+    }
 </div>
+
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.RelatorioId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <h4>Marcadores do Cranio</h4>
+    <hr />
+    @foreach (var marcadorCranio in Model.MarcadoresCranio)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => marcadorCranio.EminenciaMentoniana)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => marcadorCranio.EminenciaMentoniana)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => marcadorCranio.AreaGlabela)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => marcadorCranio.AreaGlabela)
+            </dd>
+
+            <!-- Adicione outras propriedades do MarcadorCranio que você deseja exibir -->
+        </dl>
+    }
+</div>
+
+<div>
+    <h4>Inventário do Cranio</h4>
+    <hr />
+    @foreach (var inventarioCranio in Model.InventarioCranio)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => inventarioCranio.Ocipital)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => inventarioCranio.Ocipital)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => inventarioCranio.ZigomaticoDireito)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => inventarioCranio.ZigomaticoDireito)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => inventarioCranio.ParietalDireito)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => inventarioCranio.ParietalDireito)
+            </dd>
+
+            <!-- Adicione outras propriedades do InventarioCranio que você deseja exibir -->
+        </dl>
+    }
 </div>
