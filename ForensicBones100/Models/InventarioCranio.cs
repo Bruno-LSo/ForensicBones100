@@ -14,6 +14,9 @@ namespace ForensicBones100.Models
         [ForeignKey("InventarioEsqueleto")]
         public int InventarioEsqueletoId { get; set; }
 
+        [Display(Name = "Código do Relatório")]
+        public int RelatorioId { get; set; }
+
         public int Frontal { get; set; }
         [StringLength(45)]
         public string FrontalDesc { get; set; }
@@ -105,7 +108,7 @@ namespace ForensicBones100.Models
         public string FotosCranio { get; set; }
 
         // Relação com a entidade Relatorio
-        //[ForeignKey("RelatorioId")]
+        [ForeignKey("RelatorioId")]
         public virtual Relatorio Relatorio { get; set; }
 
         // Relação com a entidade InventarioEsqueleto        

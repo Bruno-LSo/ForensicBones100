@@ -35,11 +35,15 @@ namespace ForensicBones100.Controllers
 
             var inventarioCranio = await _context.InventarioCranio
                 .Include(i => i.InventarioEsqueleto)
+                    .ThenInclude(ie => ie.Relatorio)
                 .FirstOrDefaultAsync(m => m.InventarioCranioId == id);
             if (inventarioCranio == null)
             {
                 return NotFound();
             }
+
+            var codigoRelatorio = inventarioCranio.InventarioEsqueleto.Relatorio.Codigo;
+            ViewData["Codigo"] = codigoRelatorio;
 
             return View(inventarioCranio);
         }
@@ -47,7 +51,7 @@ namespace ForensicBones100.Controllers
         // GET: InventarioCranios/Create
         public IActionResult Create()
         {
-            ViewData["InventarioEsqueletoId"] = new SelectList(_context.InventariosEsqueleto, "InventarioEsqueletoId", "InventarioEsqueletoId");
+            ViewData["Codigo"] = new SelectList(_context.Relatorios, "Codigo", "Codigo");
             return View();
         }
 
@@ -64,7 +68,7 @@ namespace ForensicBones100.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InventarioEsqueletoId"] = new SelectList(_context.InventariosEsqueleto, "InventarioEsqueletoId", "InventarioEsqueletoId", inventarioCranio.InventarioEsqueletoId);
+            ViewData["Codigo"] = new SelectList(_context.Relatorios, "Codigo", "Codigo", inventarioCranio.RelatorioId);
             return View(inventarioCranio);
         }
 

@@ -4,6 +4,7 @@ using ForensicBones100.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForensicBones100.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231202135701_M04-criacaoDB")]
+    partial class M04criacaoDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,7 +156,7 @@ namespace ForensicBones100.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("nvarchar(45)");
 
-                    b.Property<int>("RelatorioId")
+                    b.Property<int?>("RelatorioId")
                         .HasColumnType("int");
 
                     b.Property<int>("TemporalDireito")
@@ -349,9 +352,7 @@ namespace ForensicBones100.Migrations
 
                     b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
                         .WithMany("InventarioCranio")
-                        .HasForeignKey("RelatorioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RelatorioId");
 
                     b.Navigation("InventarioEsqueleto");
 
