@@ -60,15 +60,35 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InventarioCranioId,InventarioEsqueletoId,Frontal,FrontalDesc,Ocipital,OcipitalDesc,Esfenoide,EsfenoideDesc,Maxilar,MaxilarDesc,Vomer,VomerDesc,ParietalEsquerdo,ParietalEsquerdoDesc,TemporalEsquerdo,TemporalEsquerdoDesc,ConchaNasalInferiorEsquerda,ConchaNasalInferiorEsquerdaDesc,Etmoide,EtmoideDesc,LacrimalEsquerdo,LacrimalEsquerdoDesc,NasalEsquerdo,NasalEsquerdoDesc,ZigomaticoEsquerdo,ZigomaticoEsquerdoDesc,ParietalDireito,ParietalDireitoDesc,TemporalDireito,TemporalDireitoDesc,ConchaNasalInferiorDireita,ConchaNasalInferiorDireitaDesc,LacrimalDireito,LacrimalDireitoDesc,NasalDireito,NasalDireitoDesc,ZigomaticoDireito,ZigomaticoDireitoDesc,Hioide,HioideDesc,CartilagemTireoide,CartilagemTireoideDesc,Mandibula,MandibulaDesc,Observacoes,FotosCranio")] InventarioCranio inventarioCranio)
+        public async Task<IActionResult> Create([Bind("InventarioCranioId,RelatorioCodigo,InventarioEsqueletoId,Frontal,FrontalDesc,Ocipital,OcipitalDesc,Esfenoide," +
+    "EsfenoideDesc,Maxilar,MaxilarDesc,Vomer,VomerDesc,ParietalEsquerdo,ParietalEsquerdoDesc,TemporalEsquerdo,TemporalEsquerdoDesc," +
+    "ConchaNasalInferiorEsquerda,ConchaNasalInferiorEsquerdaDesc,Etmoide,EtmoideDesc,LacrimalEsquerdo,LacrimalEsquerdoDesc,NasalEsquerdo," +
+    "NasalEsquerdoDesc,ZigomaticoEsquerdo,ZigomaticoEsquerdoDesc,ParietalDireito,ParietalDireitoDesc,TemporalDireito,TemporalDireitoDesc," +
+    "ConchaNasalInferiorDireita,ConchaNasalInferiorDireitaDesc,LacrimalDireito,LacrimalDireitoDesc,NasalDireito,NasalDireitoDesc,ZigomaticoDireito," +
+    "ZigomaticoDireitoDesc,Hioide,HioideDesc,CartilagemTireoide,CartilagemTireoideDesc,Mandibula,MandibulaDesc,Observacoes,FotosCranio")] InventarioCranio inventarioCranio)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(inventarioCranio);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Obtenha o objeto Relatorio desejado
+                var relatorio = _context.Relatorios.SingleOrDefault(r => r.Codigo == inventarioCranio.RelatorioCodigo);
+
+                if (relatorio != null)
+                {
+                    // Use o atributo "Codigo" do objeto Relatorio ao criar o novo InventarioCranio
+                    inventarioCranio.RelatorioCodigo = relatorio.Codigo;
+
+                    _context.Add(inventarioCranio);
+                    await _context.SaveChangesAsync();
+
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Relatorio com o Codigo especificado não encontrado");
+                }
             }
-            ViewData["Codigo"] = new SelectList(_context.Relatorios, "Codigo", "Codigo", inventarioCranio.RelatorioId);
+
+            ViewData["Codigo"] = new SelectList(_context.Relatorios, "Codigo", "Codigo", inventarioCranio.RelatorioCodigo);
             return View(inventarioCranio);
         }
 
