@@ -23,7 +23,6 @@ using System.Collections.Generic;
             public string ObservacoesEsq { get; set; }
 
             // Relação com a entidade Relatorio
-            [ForeignKey("RelatorioId")]
             public virtual Relatorio Relatorio { get; set; }
 
             public virtual List<InventarioCranio> InventarioCranio { get; set; }
