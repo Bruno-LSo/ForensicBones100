@@ -49,11 +49,12 @@ namespace ForensicBones100.Controllers
         }
 
         // GET: InventarioCranios/Create
-        public IActionResult Create()
-        {
-            ViewData["Codigo"] = new SelectList(_context.Relatorios, "Codigo", "Codigo");
-            return View();
-        }
+
+        // public IActionResult Create()
+        //{
+        //   ViewData["Codigo"] = new SelectList(_context.Relatorios, "Codigo", "Codigo");
+        //    return View();
+        //  }
 
         // POST: InventarioCranios/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -114,7 +115,7 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("InventarioCranioId,InventarioEsqueletoId,Frontal,FrontalDesc,Ocipital,OcipitalDesc,Esfenoide,EsfenoideDesc,Maxilar,MaxilarDesc,Vomer,VomerDesc,ParietalEsquerdo,ParietalEsquerdoDesc,TemporalEsquerdo,TemporalEsquerdoDesc,ConchaNasalInferiorEsquerda,ConchaNasalInferiorEsquerdaDesc,Etmoide,EtmoideDesc,LacrimalEsquerdo,LacrimalEsquerdoDesc,NasalEsquerdo,NasalEsquerdoDesc,ZigomaticoEsquerdo,ZigomaticoEsquerdoDesc,ParietalDireito,ParietalDireitoDesc,TemporalDireito,TemporalDireitoDesc,ConchaNasalInferiorDireita,ConchaNasalInferiorDireitaDesc,LacrimalDireito,LacrimalDireitoDesc,NasalDireito,NasalDireitoDesc,ZigomaticoDireito,ZigomaticoDireitoDesc,Hioide,HioideDesc,CartilagemTireoide,CartilagemTireoideDesc,Mandibula,MandibulaDesc,Observacoes,FotosCranio")] InventarioCranio inventarioCranio)
+        public async Task<IActionResult> Edit(int id, [Bind("InventarioCranioId,RelatorioCodigo,InventarioEsqueletoId,Frontal,FrontalDesc,Ocipital,OcipitalDesc,Esfenoide,EsfenoideDesc,Maxilar,MaxilarDesc,Vomer,VomerDesc,ParietalEsquerdo,ParietalEsquerdoDesc,TemporalEsquerdo,TemporalEsquerdoDesc,ConchaNasalInferiorEsquerda,ConchaNasalInferiorEsquerdaDesc,Etmoide,EtmoideDesc,LacrimalEsquerdo,LacrimalEsquerdoDesc,NasalEsquerdo,NasalEsquerdoDesc,ZigomaticoEsquerdo,ZigomaticoEsquerdoDesc,ParietalDireito,ParietalDireitoDesc,TemporalDireito,TemporalDireitoDesc,ConchaNasalInferiorDireita,ConchaNasalInferiorDireitaDesc,LacrimalDireito,LacrimalDireitoDesc,NasalDireito,NasalDireitoDesc,ZigomaticoDireito,ZigomaticoDireitoDesc,Hioide,HioideDesc,CartilagemTireoide,CartilagemTireoideDesc,Mandibula,MandibulaDesc,Observacoes,FotosCranio")] InventarioCranio inventarioCranio)
         {
             if (id != inventarioCranio.InventarioCranioId)
             {
