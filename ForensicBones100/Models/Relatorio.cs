@@ -22,8 +22,8 @@ namespace ForensicBones100.Models
         [StringLength(45)]
         public string Observacoes { get; set; }
 
-        [Required(ErrorMessage = "Obrigado informar o Id do usuário")]
-        [Display(Name = "Id do usuário")]
+        [Required(ErrorMessage = "Obrigado informar o responsável")]
+        [Display(Name = "Responsável")]
         public int UsuarioId { get; set; }
 
         // Relação com a entidade Usuario
