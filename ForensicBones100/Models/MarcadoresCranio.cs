@@ -11,7 +11,7 @@ namespace ForensicBones100.Models
         public int MarcadoresCranioId { get; set; }
 
         [Required]
-        public int InventarioCranioId { get; set; }
+        public int RelatorioMarcadoresId { get; set; }
 
         public char CristaNucal { get; set; }
         public char ProcessoMastoide { get; set; }
@@ -24,11 +24,8 @@ namespace ForensicBones100.Models
         public string Observacoes { get; set; }
 
         // Relação com a entidade Relatorio
-        [ForeignKey("RelatorioId")]
+        [ForeignKey("RelatorioMarcadoresId")]
         public virtual Relatorio Relatorio { get; set; }
 
-        // Relação com a entidade InventarioCranio
-        [ForeignKey("InventarioCranioId")]
-        public virtual InventarioCranio InventarioCranio { get; set; }
     }
 }
