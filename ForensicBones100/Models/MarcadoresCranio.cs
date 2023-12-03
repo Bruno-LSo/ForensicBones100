@@ -11,6 +11,7 @@ namespace ForensicBones100.Models
         public int MarcadoresCranioId { get; set; }
 
         [Required]
+        [Display(Name = "Código do Relatório")]
         public int RelatorioMarcadoresId { get; set; }
 
         public char CristaNucal { get; set; }

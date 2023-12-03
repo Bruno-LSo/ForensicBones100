@@ -11,6 +11,7 @@ namespace ForensicBones100.Models
         public int InventarioCranioId { get; set; }
 
         [Required]
+        [Display(Name = "Código do Relatório")]
         public int RelatorioCranioId { get; set; }
 
         public int Frontal { get; set; }

@@ -145,7 +145,7 @@
                 @Html.DisplayNameFor(model => model.FotosCranio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InventarioEsqueleto)
+                @Html.DisplayNameFor(model => model.Relatorio)
             </th>
             <th></th>
         </tr>
@@ -286,7 +286,7 @@
                 @Html.DisplayFor(modelItem => item.FotosCranio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.InventarioEsqueleto.InventarioEsqueletoId)
+                @Html.DisplayFor(modelItem => item.Relatorio.Codigo)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.InventarioCranioId">Edit</a> |

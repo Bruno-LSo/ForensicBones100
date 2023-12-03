@@ -31,24 +31,24 @@
 <div>
     <h4>Marcadores do Cranio</h4>
     <hr />
-    @foreach (var marcadorCranio in Model.MarcadoresCranio)
+    @foreach (var marcadoresCranio in Model.MarcadoresCranio)
     {
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => marcadorCranio.EminenciaMentoniana)
+                @Html.DisplayNameFor(model => marcadoresCranio.EminenciaMentoniana)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => marcadorCranio.EminenciaMentoniana)
+                @Html.DisplayFor(model => marcadoresCranio.EminenciaMentoniana)
             </dd>
 
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => marcadorCranio.AreaGlabela)
+                @Html.DisplayNameFor(model => marcadoresCranio.AreaGlabela)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => marcadorCranio.AreaGlabela)
+                @Html.DisplayFor(model => marcadoresCranio.AreaGlabela)
             </dd>
 
-            <!-- Adicione outras propriedades do MarcadorCranio que você deseja exibir -->
+            <!-- Adicione outras propriedades do MarcadoresCranio que você deseja exibir -->
         </dl>
     }
 </div>
