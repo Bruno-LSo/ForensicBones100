@@ -62,7 +62,7 @@ namespace ForensicBones100.Controllers
             {
                 _context.Add(inventarioCranio);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "MarcadoresCranio");
+                return RedirectToAction("Create", "MarcadoresCranios");
                 //return RedirectToAction(nameof(Index));
             }
             ViewData["InventarioEsqueletoId"] = new SelectList(_context.InventariosEsqueleto, "InventarioEsqueletoId", "InventarioEsqueletoId", inventarioCranio.InventarioEsqueletoId);
