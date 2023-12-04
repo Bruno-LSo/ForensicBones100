@@ -98,10 +98,8 @@ namespace ForensicBones100.Models
         [StringLength(45)]
         public string MandibulaDesc { get; set; }
 
-        [StringLength(45)]
         public string Observacoes { get; set; }
 
-        [StringLength(45)]
         public string FotosCranio { get; set; }
 
         // Relação com a entidade Relatorio

@@ -4,41 +4,41 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>InventarioEsqueleto</h4>
+<div class="tituloPage m-3 text-center">
+    <h4><b>RELATÓRIO DE ANTROPOLOGIA FORENSE</b></h4>
+</div>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<div class="card text-center d-flex mx-auto col-lg-5 col-md-9 col-sm-8 m-5">
+    <div class="card-content">
+        <div class="card-header"><h5 class="card-title" id="">Adicionar Inventário do Esqueleto</h5></div>
+
+    </div>
+
+    <div class="card-body flex-md-column justify-content-center ">
+        <form id="cardForm" asp-action="Create" Class="text">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="InventarioEsqueletoId" />
-            <div class="form-group">
-                <label asp-for="RelatorioId" class="control-label"></label>
-                <select asp-for="RelatorioId" class="form-control" asp-items="ViewBag.RelatorioId"></select>
-                <span asp-validation-for="RelatorioId" class="text-danger"></span>
+
+            <div class="form-group mb-3 col-6 mx-auto">
+                <label asp-for="RelatorioId" class="control-label">Número do Ralatório</label>
+                <select asp-for="RelatorioId" class="form-control text-center" asp-items="ViewBag.RelatorioId"></select>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3 col-6 mx-auto">
                 <label asp-for="FotoEsqueleto" class="control-label"></label>
-                <input asp-for="FotoEsqueleto" class="form-control" />
+                <input asp-for="FotoEsqueleto" class="form-control text-center" />
                 <span asp-validation-for="FotoEsqueleto" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3 col-6 mx-auto">
                 <label asp-for="ObservacoesEsq" class="control-label"></label>
-                <input asp-for="ObservacoesEsq" class="form-control" />
+                <input asp-for="ObservacoesEsq" class="form-control text-center" />
                 <span asp-validation-for="ObservacoesEsq" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group mb-3 col-6 mx-auto">
+                <a class="btn btn-secondary m-3" asp-action="Index">Inventários</a>
+                <input type="submit" value="Adicionar" class="btn custom-button-card" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

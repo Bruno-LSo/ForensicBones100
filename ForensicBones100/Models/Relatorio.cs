@@ -11,15 +11,12 @@ namespace ForensicBones100.Models
 
         [Required(ErrorMessage = "Código do relatório obrigatório")]
         [Display(Name = "Código do Relatório")]
-        [StringLength(45)]
         public string Codigo { get; set; }
 
         [Required(ErrorMessage = "Obrigado informar a data")]
-        [DataType(DataType.Date)]
         public DateTime Data { get; set; }
 
         [Display(Name = "Observações")]
-        [StringLength(45)]
         public string Observacoes { get; set; }
 
         [Required(ErrorMessage = "Obrigado informar o responsável")]

@@ -4,288 +4,62 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="tituloPage m-3 text-center">
+    <h4><b>RELATÓRIO DE ANTROPOLOGIA FORENSE</b></h4>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>InventarioCranio</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Frontal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Frontal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FrontalDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FrontalDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ocipital)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ocipital)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OcipitalDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OcipitalDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Esfenoide)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Esfenoide)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EsfenoideDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EsfenoideDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Maxilar)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Maxilar)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxilarDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaxilarDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Vomer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Vomer)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VomerDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VomerDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParietalEsquerdo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParietalEsquerdo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParietalEsquerdoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParietalEsquerdoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TemporalEsquerdo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TemporalEsquerdo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TemporalEsquerdoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TemporalEsquerdoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConchaNasalInferiorEsquerda)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConchaNasalInferiorEsquerda)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConchaNasalInferiorEsquerdaDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConchaNasalInferiorEsquerdaDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Etmoide)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Etmoide)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EtmoideDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EtmoideDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LacrimalEsquerdo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LacrimalEsquerdo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LacrimalEsquerdoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LacrimalEsquerdoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NasalEsquerdo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NasalEsquerdo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NasalEsquerdoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NasalEsquerdoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ZigomaticoEsquerdo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZigomaticoEsquerdo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ZigomaticoEsquerdoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZigomaticoEsquerdoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParietalDireito)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParietalDireito)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParietalDireitoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ParietalDireitoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TemporalDireito)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TemporalDireito)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TemporalDireitoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TemporalDireitoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConchaNasalInferiorDireita)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConchaNasalInferiorDireita)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConchaNasalInferiorDireitaDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConchaNasalInferiorDireitaDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LacrimalDireito)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LacrimalDireito)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LacrimalDireitoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LacrimalDireitoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NasalDireito)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NasalDireito)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NasalDireitoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NasalDireitoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ZigomaticoDireito)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZigomaticoDireito)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ZigomaticoDireitoDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZigomaticoDireitoDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Hioide)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Hioide)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HioideDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HioideDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CartilagemTireoide)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CartilagemTireoide)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CartilagemTireoideDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CartilagemTireoideDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Mandibula)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Mandibula)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MandibulaDesc)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MandibulaDesc)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Observacoes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Observacoes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FotosCranio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FotosCranio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Relatorio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Relatorio.Codigo)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="InventarioCranioId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+</div>
+<hr />
+
+<div class="container pb-3">
+    <div class="card mb-3">
+        <div class="card-header text-center">
+            <h5 class="card-title" id="">Inventário do Crânio</h5><h6> Relatório: <b>@Html.DisplayFor(modelItem => Model.Relatorio.Codigo)</b></h6>
+        </div>
+        <div class="card-body text-center">
+
+            <h5 class="card-title">Fotos do Crânio</h5>
+            <p class="card-text">
+                Foto:  @Html.DisplayNameFor(model => model.FotosCranio)
+                <img src="@Model.FotosCranio" alt="Imagem" class="img-thumbnail d-flex mx-auto" style="max-width: 100%;" />
+            </p>
+
+
+            <h5 class="card-title">Ossos</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Frontal: @Html.DisplayFor(modelItem => Model.Frontal) <br /> @Html.DisplayFor(modelItem => Model.FrontalDesc)</li>
+                <li class="list-group-item">Ocipital: @Html.DisplayFor(modelItem => Model.Ocipital) <br /> @Html.DisplayFor(modelItem => Model.OcipitalDesc)</li>
+                <li class="list-group-item">Esfenoide: @Html.DisplayFor(modelItem => Model.Esfenoide) <br /> @Html.DisplayFor(modelItem => Model.EsfenoideDesc)</li>
+                <li class="list-group-item">Maxilar: @Html.DisplayFor(modelItem => Model.Maxilar) <br /> @Html.DisplayFor(modelItem => Model.MaxilarDesc)</li>
+                <li class="list-group-item">Vomer: @Html.DisplayFor(modelItem => Model.Vomer) <br /> @Html.DisplayFor(modelItem => Model.VomerDesc)</li>
+                <li class="list-group-item">Parietal Esquerdo: @Html.DisplayFor(modelItem => Model.ParietalEsquerdo) <br /> @Html.DisplayFor(modelItem => Model.ParietalEsquerdoDesc)</li>
+                <li class="list-group-item">Temporal Esquerdo: @Html.DisplayFor(modelItem => Model.TemporalEsquerdo) <br /> @Html.DisplayFor(modelItem => Model.TemporalEsquerdoDesc)</li>
+                <li class="list-group-item">Concha Nasal Esquerda: @Html.DisplayFor(modelItem => Model.ConchaNasalInferiorEsquerda) <br /> @Html.DisplayFor(modelItem => Model.ConchaNasalInferiorEsquerdaDesc)</li>
+                <li class="list-group-item">Etmoide Esquerdo: @Html.DisplayFor(modelItem => Model.Etmoide) <br /> @Html.DisplayFor(modelItem => Model.EtmoideDesc)</li>
+                <li class="list-group-item">Lacrimal Esquerdo: @Html.DisplayFor(modelItem => Model.LacrimalEsquerdo) <br /> @Html.DisplayFor(modelItem => Model.LacrimalEsquerdoDesc)</li>
+                <li class="list-group-item">Nasal Esquerdo: @Html.DisplayFor(modelItem => Model.NasalEsquerdo) <br /> @Html.DisplayFor(modelItem => Model.NasalEsquerdoDesc)</li>
+                <li class="list-group-item">Zigomatico Esquerdo: @Html.DisplayFor(modelItem => Model.ZigomaticoEsquerdo) <br /> @Html.DisplayFor(modelItem => Model.ZigomaticoEsquerdoDesc)</li>
+                <li class="list-group-item">Parietal Direito: @Html.DisplayFor(modelItem => Model.ParietalDireito) <br /> @Html.DisplayFor(modelItem => Model.ParietalDireitoDesc)</li>
+                <li class="list-group-item">Temporal Direito: @Html.DisplayFor(modelItem => Model.TemporalDireito) <br /> @Html.DisplayFor(modelItem => Model.TemporalDireitoDesc)</li>
+                <li class="list-group-item">Concha Nasal Dirireita: @Html.DisplayFor(modelItem => Model.ConchaNasalInferiorDireita) <br /> @Html.DisplayFor(modelItem => Model.ConchaNasalInferiorDireitaDesc)</li>
+                <li class="list-group-item">Etmoide Direito: @Html.DisplayFor(modelItem => Model.LacrimalDireito) <br /> @Html.DisplayFor(modelItem => Model.LacrimalDireitoDesc)</li>
+                <li class="list-group-item">Lacrimal Direito: @Html.DisplayFor(modelItem => Model.NasalDireito) <br /> @Html.DisplayFor(modelItem => Model.NasalDireitoDesc)</li>
+                <li class="list-group-item">Zigomatico Direito: @Html.DisplayFor(modelItem => Model.ZigomaticoDireito) <br /> @Html.DisplayFor(modelItem => Model.ZigomaticoDireitoDesc)</li>
+                <li class="list-group-item">Hioide: @Html.DisplayFor(modelItem => Model.Hioide) <br /> @Html.DisplayFor(modelItem => Model.HioideDesc)</li>
+                <li class="list-group-item">Cartilagem Tireoide: @Html.DisplayFor(modelItem => Model.CartilagemTireoide) <br /> @Html.DisplayFor(modelItem => Model.CartilagemTireoideDesc)</li>
+                <li class="list-group-item">Mandíbula: @Html.DisplayFor(modelItem => Model.Mandibula) <br /> @Html.DisplayFor(modelItem => Model.MandibulaDesc)</li>
+                <!-- Adicione os outros ossos aqui -->
+            </ul>
+
+            <h5 class="card-title pt-3">Observações</h5>
+            <p class="card-text pb-3">@Html.DisplayFor(modelItem => Model.Observacoes)</p>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="InventarioCranioId" />
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+                <input type="submit" value="Delete" class="btn btn-danger" />
+
+            </form>
+        </div>
+    </div>
+    }
 </div>

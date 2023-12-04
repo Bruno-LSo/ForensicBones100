@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ForensicBones100.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ForensicBones100.Controllers
 {
+    [Authorize]
     public class InventarioEsqueletosController : Controller
     {
         private readonly AppDbContext _context;

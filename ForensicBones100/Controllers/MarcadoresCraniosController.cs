@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ForensicBones100.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ForensicBones100.Controllers
 {
+    [Authorize]
     public class MarcadoresCraniosController : Controller
     {
         private readonly AppDbContext _context;
@@ -159,5 +161,27 @@ namespace ForensicBones100.Controllers
         {
             return _context.MarcadoresCranios.Any(e => e.MarcadoresCranioId == id);
         }
+
+        //calculadora estimativa sexo
+        private string DeterminarResultado(int contagemM, int contagemF, int contagemI)
+        {
+            // Implemente a lógica para determinar o resultado aqui
+            // (use a lógica que você preferir)
+            // Exemplo simples: retorne o valor mais frequente
+            if (contagemM >= contagemF && contagemM >= contagemI)
+            {
+                return "Masculino";
+            }
+            else if (contagemF >= contagemM && contagemF >= contagemI)
+            {
+                return "Feminino";
+            }
+            else
+            {
+                return "Inconclusivo";
+            }
+        }
+
+
     }
 }

@@ -21,7 +21,6 @@ namespace ForensicBones100.Models
         public char AreaGlabela { get; set; }
         public char CalculoEstimativaSexo { get; set; }
 
-        [StringLength(45)]
         public string Observacoes { get; set; }
 
         // Relação com a entidade Relatorio

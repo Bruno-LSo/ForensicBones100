@@ -19,7 +19,6 @@ namespace ForensicBones100.Models
         public string FotoEsqueleto { get; set; }
 
         [Display(Name = "Observações")]
-        [StringLength(45)]
         public string ObservacoesEsq { get; set; }
 
         // Relação com a entidade Relatorio
