@@ -162,53 +162,41 @@ namespace ForensicBones100.Controllers
             return _context.MarcadoresCranios.Any(e => e.MarcadoresCranioId == id);
         }
 
-        public string EstimarSexo(MarcadoresCranio marcadoresCranio)
+        //calcula o sexo estimado
+
+        [HttpPost]
+        public IActionResult EstimarSexoAjax([FromBody] List<string> respostas)
         {
-            try
-            {
-                var valores = new char[]
-                {
-            marcadoresCranio.CristaNucal,
-            marcadoresCranio.ProcessoMastoide,
-            marcadoresCranio.EminenciaMentoniana,
-            marcadoresCranio.AreaGlabela,
-            marcadoresCranio.SupraOrbital
-                };
+            // Conte a ocorrência de cada resposta
+            var contagemMasculino = respostas.Count(r => r == "M");
+            var contagemFeminino = respostas.Count(r => r == "F");
+            var contagemInconclusivo = respostas.Count(r => r == "I");
 
-                var valorMaisFrequente = valores
-                    .GroupBy(i => i)
-                    .OrderByDescending(g => g.Count())
-                    .Select(g => g.Key)
-                    .FirstOrDefault();
+            // Determine a resposta mais frequente
+            var resultado = DeterminarResultado(contagemMasculino, contagemFeminino, contagemInconclusivo);
 
-                string resultado;
-
-                switch (valorMaisFrequente)
-                {
-                    case 'F':
-                        resultado = "Feminino";
-                        break;
-                    case 'M':
-                        resultado = "Masculino";
-                        break;
-                    case 'I':
-                        resultado = "Inconclusivo";
-                        break;
-                    default:
-                        resultado = "Inconclusivo";
-                        break;
-                }
-
-                marcadoresCranio.CalculoEstimativaSexo = resultado;
-
-                return resultado;
-            }
-            catch
-            {
-                return "Erro ao estimar o sexo";
-            }
+            // Retorne o resultado como JSON
+            return Json(resultado);
         }
 
+        private string DeterminarResultado(int contagemM, int contagemF, int contagemI)
+        {
+            // Implemente a lógica para determinar o resultado aqui
+            // (use a lógica que você preferir)
+            // Exemplo simples: retorne o valor mais frequente
+            if (contagemM >= contagemF && contagemM >= contagemI)
+            {
+                return "M";
+            }
+            else if (contagemF >= contagemM && contagemF >= contagemI)
+            {
+                return "F";
+            }
+            else
+            {
+                return "I";
+            }
+        }
 
     }
 }
