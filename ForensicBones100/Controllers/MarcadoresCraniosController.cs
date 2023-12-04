@@ -162,26 +162,54 @@ namespace ForensicBones100.Controllers
             return _context.MarcadoresCranios.Any(e => e.MarcadoresCranioId == id);
         }
 
-        //calculadora estimativa sexo
-        private string DeterminarResultado(int contagemM, int contagemF, int contagemI)
+        public string EstimarSexo(MarcadoresCranio marcadoresCranio)
         {
-            // Implemente a lógica para determinar o resultado aqui
-            // (use a lógica que você preferir)
-            // Exemplo simples: retorne o valor mais frequente
-            if (contagemM >= contagemF && contagemM >= contagemI)
+            try
             {
-                return "Masculino";
+                var valores = new char[]
+                {
+            marcadoresCranio.CristaNucal,
+            marcadoresCranio.ProcessoMastoide,
+            marcadoresCranio.EminenciaMentoniana,
+            marcadoresCranio.AreaGlabela,
+            marcadoresCranio.SupraOrbital
+                };
+
+                var valorMaisFrequente = valores
+                    .GroupBy(i => i)
+                    .OrderByDescending(g => g.Count())
+                    .Select(g => g.Key)
+                    .FirstOrDefault();
+
+                string resultado;
+
+                switch (valorMaisFrequente)
+                {
+                    case 'F':
+                        resultado = "Feminino";
+                        break;
+                    case 'M':
+                        resultado = "Masculino";
+                        break;
+                    case 'I':
+                        resultado = "Inconclusivo";
+                        break;
+                    default:
+                        resultado = "Inconclusivo";
+                        break;
+                }
+
+                marcadoresCranio.CalculoEstimativaSexo = resultado;
+
+                return resultado;
             }
-            else if (contagemF >= contagemM && contagemF >= contagemI)
+            catch
             {
-                return "Feminino";
-            }
-            else
-            {
-                return "Inconclusivo";
+                return "Erro ao estimar o sexo";
             }
         }
 
 
     }
 }
+

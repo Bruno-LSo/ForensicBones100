@@ -268,7 +268,7 @@
             <form asp-action="Delete">
                 <input type="hidden" />
                 <a asp-action="Index" class="btn btn-secondary me-1" id="cancelDelete" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar">Estimativas</a>
-                <button type="submit" class="EstimarSexobtn btn custom-button-card" value="" id="" data-bs-toggle="tooltip" data-bs-placement="top" title="">Estimar Sexo</button>
+                <button type="submit" onclick="estimarSexo" class="EstimarSexobtn btn custom-button-card" value="" id="" data-bs-toggle="tooltip" data-bs-placement="top" title="">Estimar Sexo</button>
                 <button type="submit" class="btn custom-button-card" value="Create" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Create">Adicionar</button>
             </form>
         </div>
@@ -277,39 +277,32 @@
 @section Scripts {
     <script>
         function estimarSexo() {
-            // Obtenha os valores selecionados
-            var cristaNucal = document.getElementById('cristaNucal').value;
-            var processoMastoide = document.getElementById('processoMastoide').value;
-            var eminenciaMentoniana = document.getElementById('eminenciaMentoniana').value;
-            var areaGlabela = document.getElementById('areaGlabela').value;
-            var supraOrbital = document.getElementById('supraOrbital').value;
+            var cristalNucal = document.getElementById('CristalNucal').value;
+            var processoMastoide = document.getElementById('ProcessoMastoide').value;
+            var eminenciaMentoniana = document.getElementById('EminenciaMentoniana').value;
+            var areaGlabela = document.getElementById('AreaGlabela').value;
+            var supraOrbital = document.getElementById('SupraOrbital').value;
 
-            // Crie um array com as respostas
-            var respostas = [cristaNucal, processoMastoide, eminenciaMentoniana, areaGlabela, supraOrbital];
+            var marcadoresCranio = {
+                CristalNucal: cristalNucal,
+                ProcessoMastoide: processoMastoide,
+                EminenciaMentoniana: eminenciaMentoniana,
+                AreaGlabela: areaGlabela,
+                SupraOrbital: supraOrbital
+            };
 
-            // Conte a ocorrência de cada resposta
-            var contagemMasculino = respostas.filter(r => r === 'M').length;
-            var contagemFeminino = respostas.filter(r => r === 'F').length;
-            var contagemInconclusivo = respostas.filter(r => r === 'I').length;
-
-            // Determine a resposta mais frequente
-            var resultado = determinarResultado(contagemMasculino, contagemFeminino, contagemInconclusivo);
-
-            // Atualize o campo CalculoEstimativaSexo
-            document.getElementById('CalculoEstimativaSexo').value = resultado;
-        }
-
-        function determinarResultado(contagemM, contagemF, contagemI) {
-            // Implemente a lógica para determinar o resultado aqui
-            // (use a lógica que você preferir)
-            // Exemplo simples: retorne o valor mais frequente
-            if (contagemM >= contagemF && contagemM >= contagemI) {
-                return 'Masculino';
-            } else if (contagemF >= contagemM && contagemF >= contagemI) {
-                return 'Feminino';
-            } else {
-                return 'Inconclusivo';
-            }
+            $.ajax({
+                url: '/MarcadoresCranio/EstimarSexo',
+                type: 'POST',
+                data: JSON.stringify(marcadoresCranio),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert('Estimativa de Sexo: ' + data);
+                },
+                error: function () {
+                    alert('Erro ao estimar o sexo');
+                }
+            });
         }
     </script>
 }

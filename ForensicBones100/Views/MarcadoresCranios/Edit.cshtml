@@ -246,11 +246,42 @@
             <form asp-action="Delete">
                 <input type="hidden" />
                 <a asp-action="Index" class="btn btn-secondary me-1" id="cancelDelete" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar">Voltar</a>
-                <button type="submit" class="btn custom-button-card" value="Create" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Create">Alterar</button>
+                <button type="submit" onclick="estimarSexo()"class="btn custom-button-card" value="Create" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Create">Alterar</button>
             </form>
         </div>
     </div>
 </form>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function estimarSexo() {
+            var cristalNucal = document.getElementById('CristalNucal').value;
+            var processoMastoide = document.getElementById('ProcessoMastoide').value;
+            var eminenciaMentoniana = document.getElementById('EminenciaMentoniana').value;
+            var areaGlabela = document.getElementById('AreaGlabela').value;
+            var supraOrbital = document.getElementById('SupraOrbital').value;
+
+            var marcadoresCranio = {
+                CristalNucal: cristalNucal,
+                ProcessoMastoide: processoMastoide,
+                EminenciaMentoniana: eminenciaMentoniana,
+                AreaGlabela: areaGlabela,
+                SupraOrbital: supraOrbital
+            };
+
+            $.ajax({
+                url: '/MarcadoresCranio/EstimarSexo',
+                type: 'POST',
+                data: JSON.stringify(marcadoresCranio),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    alert('Estimativa de Sexo: ' + data);
+                },
+                error: function () {
+                    alert('Erro ao estimar o sexo');
+                }
+            });
+        }
+    </script>
 }

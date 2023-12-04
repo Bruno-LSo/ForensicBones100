@@ -19,7 +19,7 @@ namespace ForensicBones100.Models
         public char EminenciaMentoniana { get; set; }
         public char SupraOrbital { get; set; }
         public char AreaGlabela { get; set; }
-        public char CalculoEstimativaSexo { get; set; }
+        public string CalculoEstimativaSexo { get; set; }
 
         public string Observacoes { get; set; }
 

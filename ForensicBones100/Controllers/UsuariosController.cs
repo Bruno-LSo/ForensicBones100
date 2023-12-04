@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace ForensicBones100.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UsuariosController : Controller
     {
         private readonly AppDbContext _context;
