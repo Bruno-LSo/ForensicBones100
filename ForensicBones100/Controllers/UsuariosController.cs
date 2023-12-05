@@ -9,6 +9,7 @@ using ForensicBones100.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace ForensicBones100.Controllers
 {
@@ -155,21 +156,36 @@ namespace ForensicBones100.Controllers
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,Email,Senha,Cargo,Perfil")] Usuario usuario)
         {
-            if (id != usuario.UsuarioId)
+            if (User.IsInRole("User"))
             {
-                return NotFound();
+                return NotFound("Não autorizado");
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
-                    _context.Update(usuario);
+                    // Recupera o usuário existente do banco de dados
+                    var usuarioExistente = await _context.Usuarios.FindAsync(id);
+
+                    if (usuarioExistente == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Atualiza as propriedades do usuário existente
+                    usuarioExistente.Nome = usuario.Nome;
+                    usuarioExistente.Email = usuario.Email;
+                    usuarioExistente.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+                    usuarioExistente.Cargo = usuario.Cargo;
+                    usuarioExistente.Perfil = usuario.Perfil;
+
+                    _context.Update(usuarioExistente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -183,12 +199,13 @@ namespace ForensicBones100.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Usuarios");
             }
             return View(usuario);
         }
 
         // GET: Usuarios/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -207,6 +224,7 @@ namespace ForensicBones100.Controllers
         }
 
         // POST: Usuarios/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
