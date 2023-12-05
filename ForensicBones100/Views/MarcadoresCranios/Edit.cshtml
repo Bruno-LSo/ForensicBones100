@@ -43,7 +43,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="CristaNucal" id="CristaNucal" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="CristaNucal" id="CristaNucalCalc" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -88,7 +88,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="ProcessoMastoide" id="ProcessoMastoide" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="ProcessoMastoide" id="ProcessoMastoideCalc" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -133,7 +133,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="EminenciaMentoniana" id="EminenciaMentoniana" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="EminenciaMentoniana" id="EminenciaMentonianaCalc" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -178,7 +178,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="AreaGlabela" id="AreaGlabela" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="AreaGlabela" id="AreaGlabelaCalc" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -223,7 +223,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="SupraOrbital" id="SupraOrbital" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="SupraOrbital" id="SupraOrbitalCalc" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -265,7 +265,7 @@
 
             <input type="hidden" />
             <a asp-action="Index" class="btn btn-secondary me-1" id="cancelDelete" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar">Estimativas</a>
-            <button type="submit" class="btn custom-button-card" value="Edit" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">Alterar</button>
+            <button type="submit" class="btn custom-button-card" value="Edit" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">Alterar/button>
 
         </div>
     </div>
@@ -274,11 +274,11 @@
     <script>
         function estimarSexo() {
             // Obtenha os valores selecionados
-            var cristaNucal = document.getElementById('CristaNucal').value;
-            var processoMastoide = document.getElementById('ProcessoMastoide').value;
-            var eminenciaMentoniana = document.getElementById('EminenciaMentoniana').value;
-            var areaGlabela = document.getElementById('AreaGlabela').value;
-            var supraOrbital = document.getElementById('SupraOrbital').value;
+            var cristaNucal = document.getElementById('CristaNucalCalc').value;
+            var processoMastoide = document.getElementById('ProcessoMastoideCalc').value;
+            var eminenciaMentoniana = document.getElementById('EminenciaMentonianaCalc').value;
+            var areaGlabela = document.getElementById('AreaGlabelaCalc').value;
+            var supraOrbital = document.getElementById('SupraOrbitalCalc').value;
 
             // Crie um array com as respostas
             var respostas = [cristaNucal, processoMastoide, eminenciaMentoniana, areaGlabela, supraOrbital];
