@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<form asp-action="Edit">
+<form asp-action="Create">
     <div class="card text-center d-flex mx-auto m-5 col-lg-8 col-md-12 col-sm-12">
         <div class="card-header">
             <h3>Estimativa de Sexo</h3>
@@ -43,7 +43,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="CristaNucal" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="CristaNucal" id="CristaNucal" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -88,7 +88,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="ProcessoMastoide" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="ProcessoMastoide" id="ProcessoMastoide" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -133,7 +133,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="EminenciaMentoniana" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="EminenciaMentoniana" id="EminenciaMentoniana" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -178,7 +178,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="AreaGlabela" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="AreaGlabela" id="AreaGlabela" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -223,7 +223,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="SupraOrbital" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="SupraOrbital" id="SupraOrbital" class="form-select text-center" aria-label="Default select example">
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -242,46 +242,86 @@
                 </div>
             </div>
         </div>
+        <div class="modal" id="resultadoModal" tabindex="-1">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h5 class="modal-title">Resultado da Estimativa de Sexo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mx-auto col-2">
+            <label asp-for="CalculoEstimativaSexo" class="control-label"><b>Sexo Estimado</b></label>
+            <input asp-for="CalculoEstimativaSexo" class="form-control text-center" readonly />
+            <span asp-validation-for="CalculoEstimativaSexo" class="text-danger"></span>
+            <button type="button" class="EstimarSexobtn btn custom-button-card mt-3" value="" id="" data-bs-toggle="tooltip" data-bs-placement="top" title="" onclick="estimarSexo()">Estimar Sexo</button>
+        </div>
         <div class="buttonCrud mt-5 mb-5 d-flex mx-auto align-content-center">
-            <form asp-action="Delete">
-                <input type="hidden" />
-                <a asp-action="Index" class="btn btn-secondary me-1" id="cancelDelete" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar">Voltar</a>
-                <button type="submit" onclick="estimarSexo()"class="btn custom-button-card" value="Create" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Create">Alterar</button>
-            </form>
+
+            <input type="hidden" />
+            <a asp-action="Index" class="btn btn-secondary me-1" id="cancelDelete" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar">Estimativas</a>
+            <button type="submit" class="btn custom-button-card" value="Edit" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">Alterar</button>
+
         </div>
     </div>
 </form>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
     <script>
         function estimarSexo() {
-            var cristalNucal = document.getElementById('CristalNucal').value;
+            // Obtenha os valores selecionados
+            var cristaNucal = document.getElementById('CristaNucal').value;
             var processoMastoide = document.getElementById('ProcessoMastoide').value;
             var eminenciaMentoniana = document.getElementById('EminenciaMentoniana').value;
             var areaGlabela = document.getElementById('AreaGlabela').value;
             var supraOrbital = document.getElementById('SupraOrbital').value;
 
-            var marcadoresCranio = {
-                CristalNucal: cristalNucal,
-                ProcessoMastoide: processoMastoide,
-                EminenciaMentoniana: eminenciaMentoniana,
-                AreaGlabela: areaGlabela,
-                SupraOrbital: supraOrbital
-            };
+            // Crie um array com as respostas
+            var respostas = [cristaNucal, processoMastoide, eminenciaMentoniana, areaGlabela, supraOrbital];
 
-            $.ajax({
-                url: '/MarcadoresCranio/EstimarSexo',
-                type: 'POST',
-                data: JSON.stringify(marcadoresCranio),
-                contentType: 'application/json; charset=utf-8',
-                success: function (data) {
-                    alert('Estimativa de Sexo: ' + data);
-                },
-                error: function () {
-                    alert('Erro ao estimar o sexo');
-                }
-            });
+            // Conte a ocorrência de cada resposta
+            var contagemMasculino = respostas.filter(r => r === 'M').length;
+            var contagemFeminino = respostas.filter(r => r === 'F').length;
+            var contagemInconclusivo = respostas.filter(r => r === 'I').length;
+
+            // Determine a resposta mais frequente
+            var resultado = determinarResultado(contagemMasculino, contagemFeminino, contagemInconclusivo);
+
+            // Atualize o campo CalculoEstimativaSexo
+            document.getElementById('CalculoEstimativaSexo').value = resultado;
+
+            // Exiba o modal com o resultado
+            exibirModalResultado(resultado);
         }
+
+        function determinarResultado(contagemM, contagemF, contagemI) {
+            // Implemente a lógica para determinar o resultado aqui
+            // (use a lógica que você preferir)
+            // Exemplo simples: retorne o valor mais frequente
+            if (contagemM >= contagemF && contagemM >= contagemI) {
+                return 'M';
+            } else if (contagemF >= contagemM && contagemF >= contagemI) {
+                return 'F';
+            } else {
+                return 'I';
+            }
+        }
+
+        function exibirModalResultado(resultado) {
+            // Lógica para exibir o modal com o resultado aqui
+            // Por exemplo, você pode preencher o <p> dentro do modal com o resultado
+            var modalBody = document.querySelector('#resultadoModal .modal-body p');
+            modalBody.textContent = 'Resultado: ' + resultado;
+
+            // Abra o modal
+            $('#resultadoModal').modal('show');
+        }
+
+        // Exemplo de vinculação ao evento de clique no botão "Estimar Sexo"
+        document.querySelector('.EstimarSexobtn').addEventListener('click', estimarSexo);
     </script>
 }
