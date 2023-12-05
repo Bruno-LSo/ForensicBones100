@@ -184,11 +184,11 @@ namespace ForensicBones100.Controllers
             // Implemente a lógica para determinar o resultado aqui
             // (use a lógica que você preferir)
             // Exemplo simples: retorne o valor mais frequente
-            if (contagemM >= contagemF && contagemM >= contagemI)
+            if (contagemM > contagemF && contagemM >= contagemI)
             {
                 return "M";
             }
-            else if (contagemF >= contagemM && contagemF >= contagemI)
+            else if (contagemF > contagemM && contagemF >= contagemI)
             {
                 return "F";
             }
