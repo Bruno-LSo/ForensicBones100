@@ -344,7 +344,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
                 <div class="form-group mt-3">
                     <a class="btn btn-secondary m-3" asp-action="Index">Inventários</a>
                     <input type="submit" value="Adicionar" class="btn custom-button-card" />
@@ -354,5 +354,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
