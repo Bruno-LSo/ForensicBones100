@@ -59,7 +59,7 @@ namespace ForensicBones100.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,CristaNucalDesc,ProcessoMastoide,ProcessoMastoideDesc," +
-            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
+            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo")] MarcadoresCranio marcadoresCranio)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace ForensicBones100.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,CristaNucalDesc,ProcessoMastoide,ProcessoMastoideDesc," +
-            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
+            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo")] MarcadoresCranio marcadoresCranio)
         {
             if (id != marcadoresCranio.MarcadoresCranioId)
             {
