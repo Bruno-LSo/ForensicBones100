@@ -8,7 +8,9 @@
     <h4><b>RELATÓRIO DE ANTROPOLOGIA FORENSE - ESTIMATIVA DE SEXO PELO CÂNIO</b></h4>
 </div>
 <hr />
-
+<div class="btn-card mb-3 ms-5 mx-auto">
+    <a asp-action="Create" class="btn custom-button-card">Estimar Sexo</a>
+</div>
 <div class="container col-12">
     <div class="row ">
         @foreach (var item in Model)
@@ -16,7 +18,8 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header text-center">
-                        <h5 class="card-title" id="">Marcadores do Crânio<b></b></h5>
+                        <h5 class="card-title" id="">Relatório: <b>@Html.DisplayFor(modelItem => @item.Relatorio.Codigo)</b></h5>
+                        <h3 class="card-title" id="">Marcadores do Crânio<b></b></h3>
                     </div>
                     <div class="card-body">
 
@@ -65,8 +68,19 @@
                                             <textarea class="form-control text-center" readonly placeholder="Deixe um comentário aqui" id="floatingTextarea2" style="height: 40px">@item.Observacoes</textarea>
                                         </td>
                                     </tr>
+                                    
                                 </tbody>
+                                
                             </table>
+                            <div class="form-group align-content-center mx-auto text-center col-lg-6 col-md-8 col-sm-12 mb-3">
+                                <div class="custom-bg-color d-flex  p-3">
+                                    <div class="mr-3 pe-1" style="flex: 1;">
+                                        <label for="CalculoEstimativaSexo" class="control-label">Sexo Estimado:</label>
+                                        @Html.DisplayFor(modelItem => item.CalculoEstimativaSexo)
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="buttonCrud m-3 d-flex mx-auto justify-content-center">
                                 <a asp-action="Edit" asp-route-id="@item.MarcadoresCranioId" class="btn btn-secondary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Alterar</a>
                                 <a asp-action="Delete" asp-route-id="@item.MarcadoresCranioId" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Deletar">Apagar</a>
