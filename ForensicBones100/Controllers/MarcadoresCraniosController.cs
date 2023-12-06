@@ -58,7 +58,8 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,ProcessoMastoide,EminenciaMentoniana,SupraOrbital,AreaGlabela,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
+        public async Task<IActionResult> Create([Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,CristaNucalDesc,ProcessoMastoide,ProcessoMastoideDesc," +
+            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +93,8 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,ProcessoMastoide,EminenciaMentoniana,SupraOrbital,AreaGlabela,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
+        public async Task<IActionResult> Edit(int id, [Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,CristaNucalDesc,ProcessoMastoide,ProcessoMastoideDesc," +
+            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
         {
             if (id != marcadoresCranio.MarcadoresCranioId)
             {

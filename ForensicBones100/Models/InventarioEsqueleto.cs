@@ -15,7 +15,7 @@ namespace ForensicBones100.Models
         public int RelatorioId { get; set; }
 
         [Display(Name = "Fotos do Esqueleto")]
-        [StringLength(45)]
+        
         public string FotoEsqueleto { get; set; }
 
         [Display(Name = "Observações")]
