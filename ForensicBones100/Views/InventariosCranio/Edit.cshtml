@@ -9,44 +9,44 @@
 
 </div>
 <hr />
-<div class="row m-5">
-    <div class="row-cols">
+<div class="col-12 mx-auto m-5">
+    <div class="col-12 mx-auto">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group col-lg-3 col-md-4 col-sm-6">
-                <label asp-for="Relatorio.Codigo" class="control-label"></label>
-                <select asp-for="RelatorioCranioId" class="form-control text-center" asp-items="ViewBag.RelatorioCranioId"></select>
+            <div class="form-group col-lg-2 col-md-6 col-sm-3">
+                <label asp-for="Relatorio.Codigo" class="control-label col-12"></label>
+                <select asp-for="RelatorioCranioId" class="form-control text-center col-3" asp-items="ViewBag.RelatorioCranioId"></select>
                 <span asp-validation-for="Relatorio.Codigo" class="text-danger"></span>
             </div>
-            <div class="form-group col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group col-lg-6 col-md-12 col-sm-12">
                 <label asp-for="FotosCranio" class="control-label"></label>
                 <input asp-for="FotosCranio" class="form-control" />
                 <span asp-validation-for="FotosCranio" class="text-danger"></span>
             </div>
-            <div class="form-group col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group col-lg-8 col-md-12 col-sm-12">
                 <label asp-for="Observacoes" class="control-label"></label>
-                <input asp-for="Observacoes" class="form-control" />
+                <textarea asp-for="Observacoes" class="form-control"></textarea>
                 <span asp-validation-for="Observacoes" class="text-danger"></span>
             </div>
 
-            <div class="row mt-5">
+            <div class="col-12 mt-5">
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
-                        <div class="mr-3 pe-1" style="flex: 1;">
+                        <div class="mr-3 pe-1 col-12" style="flex: 1;">
                             <label asp-for="Frontal" class="control-label"></label>
                             <input asp-for="Frontal" class="form-control" />
                             <span asp-validation-for="Frontal" class="text-danger"></span>
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="FrontalDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="FrontalDesc" class="form-control" />
+                            <textarea asp-for="FrontalDesc" class="form-control"></textarea>
                             <span asp-validation-for="FrontalDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Ocipital" class="control-label"></label>
@@ -55,13 +55,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="OcipitalDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="OcipitalDesc" class="form-control" />
+                            <textarea asp-for="OcipitalDesc" class="form-control"></textarea>
                             <span asp-validation-for="OcipitalDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Esfenoide" class="control-label"></label>
@@ -70,13 +70,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="EsfenoideDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="EsfenoideDesc" class="form-control" />
+                            <textarea asp-for="EsfenoideDesc" class="form-control"></textarea>
                             <span asp-validation-for="EsfenoideDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Maxilar" class="control-label"></label>
@@ -85,13 +85,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="MaxilarDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="MaxilarDesc" class="form-control" />
+                            <textarea asp-for="MaxilarDesc" class="form-control"></textarea>
                             <span asp-validation-for="MaxilarDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Vomer" class="control-label"></label>
@@ -100,13 +100,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="VomerDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="VomerDesc" class="form-control" />
+                            <textarea asp-for="VomerDesc" class="form-control"></textarea>
                             <span asp-validation-for="VomerDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="ParietalEsquerdoDesc" class="control-label"></label>
@@ -115,13 +115,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="ParietalEsquerdoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="ParietalEsquerdoDesc" class="form-control" />
+                            <textarea asp-for="ParietalEsquerdoDesc" class="form-control"></textarea>
                             <span asp-validation-for="ParietalEsquerdoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="TemporalEsquerdo" class="control-label"></label>
@@ -130,13 +130,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="TemporalEsquerdoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="TemporalEsquerdoDesc" class="form-control" />
+                            <textarea asp-for="TemporalEsquerdoDesc" class="form-control"></textarea>
                             <span asp-validation-for="TemporalEsquerdoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="ConchaNasalInferiorEsquerda" class="control-label"></label>
@@ -145,13 +145,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="ConchaNasalInferiorEsquerdaDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="ConchaNasalInferiorEsquerdaDesc" class="form-control" />
+                            <textarea asp-for="ConchaNasalInferiorEsquerdaDesc" class="form-control"></textarea>
                             <span asp-validation-for="ConchaNasalInferiorEsquerdaDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Etmoide" class="control-label"></label>
@@ -160,13 +160,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="EtmoideDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="EtmoideDesc" class="form-control" />
+                            <textarea asp-for="EtmoideDesc" class="form-control"></textarea>
                             <span asp-validation-for="EtmoideDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="LacrimalEsquerdo" class="control-label"></label>
@@ -175,13 +175,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="LacrimalEsquerdoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="LacrimalEsquerdoDesc" class="form-control" />
+                            <textarea asp-for="LacrimalEsquerdoDesc" class="form-control"></textarea>
                             <span asp-validation-for="LacrimalEsquerdoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="NasalEsquerdo" class="control-label"></label>
@@ -190,13 +190,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="NasalEsquerdoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="NasalEsquerdoDesc" class="form-control" />
+                            <textarea asp-for="NasalEsquerdoDesc" class="form-control"></textarea>
                             <span asp-validation-for="NasalEsquerdoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="ZigomaticoEsquerdo" class="control-label"></label>
@@ -205,13 +205,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="ZigomaticoEsquerdoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="ZigomaticoEsquerdoDesc" class="form-control" />
+                            <textarea asp-for="ZigomaticoEsquerdoDesc" class="form-control"></textarea>
                             <span asp-validation-for="ZigomaticoEsquerdoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="ParietalDireito" class="control-label"></label>
@@ -220,13 +220,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="ParietalDireitoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="ParietalDireitoDesc" class="form-control" />
+                            <textarea asp-for="ParietalDireitoDesc" class="form-control"></textarea>
                             <span asp-validation-for="ParietalDireitoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="TemporalDireito" class="control-label"></label>
@@ -235,13 +235,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="TemporalDireitoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="TemporalDireitoDesc" class="form-control" />
+                            <textarea asp-for="TemporalDireitoDesc" class="form-control"></textarea>
                             <span asp-validation-for="TemporalDireitoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="ConchaNasalInferiorDireita" class="control-label"></label>
@@ -250,13 +250,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="ConchaNasalInferiorDireitaDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="ConchaNasalInferiorDireitaDesc" class="form-control" />
+                            <textarea asp-for="ConchaNasalInferiorDireitaDesc" class="form-control"></textarea>
                             <span asp-validation-for="ConchaNasalInferiorDireitaDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="LacrimalDireito" class="control-label"></label>
@@ -265,13 +265,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="LacrimalDireitoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="LacrimalDireitoDesc" class="form-control" />
+                            <textarea asp-for="LacrimalDireitoDesc" class="form-control"></textarea>
                             <span asp-validation-for="LacrimalDireitoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="NasalDireito" class="control-label"></label>
@@ -280,13 +280,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="NasalDireitoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="NasalDireitoDesc" class="form-control" />
+                            <textarea asp-for="NasalDireitoDesc" class="form-control"></textarea>
                             <span asp-validation-for="NasalDireitoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="ZigomaticoDireito" class="control-label"></label>
@@ -295,13 +295,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="ZigomaticoDireitoDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="ZigomaticoDireitoDesc" class="form-control" />
+                            <textarea asp-for="ZigomaticoDireitoDesc" class="form-control"></textarea>
                             <span asp-validation-for="ZigomaticoDireitoDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Hioide" class="control-label"></label>
@@ -310,13 +310,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="HioideDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="HioideDesc" class="form-control" />
+                            <textarea asp-for="HioideDesc" class="form-control"></textarea>
                             <span asp-validation-for="HioideDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="CartilagemTireoide" class="control-label"></label>
@@ -325,13 +325,13 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="CartilagemTireoideDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="CartilagemTireoideDesc" class="form-control" />
+                            <textarea asp-for="CartilagemTireoideDesc" class="form-control"></textarea>
                             <span asp-validation-for="CartilagemTireoideDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6 col-md-8 col-sm-12 mb-3">
+                <div class="form-group mb-3">
                     <div class="custom-bg-color d-flex  p-3">
                         <div class="mr-3 pe-1" style="flex: 1;">
                             <label asp-for="Mandibula" class="control-label"></label>
@@ -340,14 +340,14 @@
                         </div>
                         <div style="flex: 1;">
                             <label asp-for="MandibulaDesc" class="form-check-label">Descrição</label>
-                            <input asp-for="MandibulaDesc" class="form-control" />
+                            <textarea asp-for="MandibulaDesc" class="form-control"></textarea>
                             <span asp-validation-for="MandibulaDesc" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
-                <div class="form-group mt-3">
-                    <a class="btn btn-secondary m-3" asp-action="Index">Inventários</a>
-                    <input type="submit" value="Alterar" class="btn custom-button-card" />
+                <div class="form-group mt-3 col-12 mx-auto">
+                    <a class="btn btn-secondary m-3 mx-auto" asp-action="Index">Inventários</a>
+                    <input type="submit" value="Alterar" class="btn custom-button-card mx-auto" />
                 </div>
         </form>
     </div>
