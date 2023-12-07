@@ -9,8 +9,8 @@ namespace ForensicBones100.Models
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Relatorio> Relatorios { get; set; }
         public DbSet<InventarioEsqueleto> InventariosEsqueleto { get; set; }
-        public DbSet<InventarioCranio> InventarioCranio { get; set; }
-        public DbSet<MarcadoresCranio> MarcadoresCranio { get; set; }
+        public DbSet<InventarioCranio> InventariosCranio { get; set; }
+        public DbSet<MarcadoresCranio> MarcadoresCranios { get; set; }
 
         // Configurações adicionais do modelo, se necessário, podem ser feitas aqui
         protected override void OnModelCreating(ModelBuilder modelBuilder)

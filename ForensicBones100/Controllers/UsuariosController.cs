@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ForensicBones100.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace ForensicBones100.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class UsuariosController : Controller
     {
         private readonly AppDbContext _context;
@@ -22,6 +27,72 @@ namespace ForensicBones100.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Usuarios.ToListAsync());
+        }
+
+        //Controle de Usuário
+
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login(Usuario usuario)
+        {
+            var dados = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == usuario.Email);
+
+            if (dados == null)
+            {
+                ViewBag.Message = "Usuário e/ou senha inválidos!";
+                return View();
+
+            }
+
+            bool senhaOk = BCrypt.Net.BCrypt.Verify(usuario.Senha, dados.Senha);
+
+            if (senhaOk)
+            {
+                var claims = new List<Claim>
+                {
+                    new(ClaimTypes.Name, dados.Nome),
+                    new(ClaimTypes.NameIdentifier, dados.Email.ToString()),
+                    new(ClaimTypes.Role, dados.Perfil.ToString())
+                };
+
+                var usuarioIdentity = new ClaimsIdentity(claims, "login");
+                ClaimsPrincipal principal = new ClaimsPrincipal(usuarioIdentity);
+
+                var props = new AuthenticationProperties
+                {
+                    AllowRefresh = true,
+                    ExpiresUtc = DateTime.UtcNow.ToLocalTime().AddHours(8),
+                    IsPersistent = true,
+                };
+
+                await HttpContext.SignInAsync(principal, props);
+
+                return Redirect("/");
+            }
+            else
+            {
+                ViewBag.Message = "Usuário e/ou senha inválidos!";
+            }
+
+            return View();
+        }
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login", "Usuarios");
         }
 
         // GET: Usuarios/Details/5
@@ -43,6 +114,7 @@ namespace ForensicBones100.Controllers
         }
 
         // GET: Usuarios/Create
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
@@ -53,13 +125,14 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,Email,Senha,Cargo")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("UsuarioId,Nome,Email,Senha,Cargo,Perfil")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
+                usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Relatorios");
             }
             return View(usuario);
         }
@@ -83,20 +156,36 @@ namespace ForensicBones100.Controllers
         // POST: Usuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,Email,Senha,Cargo")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("UsuarioId,Nome,Email,Senha,Cargo,Perfil")] Usuario usuario)
         {
-            if (id != usuario.UsuarioId)
+            if (User.IsInRole("User"))
             {
-                return NotFound();
+                return NotFound("Não autorizado");
             }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(usuario);
+                    // Recupera o usuário existente do banco de dados
+                    var usuarioExistente = await _context.Usuarios.FindAsync(id);
+
+                    if (usuarioExistente == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Atualiza as propriedades do usuário existente
+                    usuarioExistente.Nome = usuario.Nome;
+                    usuarioExistente.Email = usuario.Email;
+                    usuarioExistente.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+                    usuarioExistente.Cargo = usuario.Cargo;
+                    usuarioExistente.Perfil = usuario.Perfil;
+
+                    _context.Update(usuarioExistente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -110,12 +199,13 @@ namespace ForensicBones100.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Usuarios");
             }
             return View(usuario);
         }
 
         // GET: Usuarios/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,6 +224,7 @@ namespace ForensicBones100.Controllers
         }
 
         // POST: Usuarios/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

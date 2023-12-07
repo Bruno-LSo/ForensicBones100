@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ForensicBones100.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ForensicBones100.Controllers
 {
+    [Authorize]
     public class RelatoriosController : Controller
     {
         private readonly AppDbContext _context;
@@ -66,7 +68,7 @@ namespace ForensicBones100.Controllers
             {
                 _context.Add(relatorio);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "InventarioEsqueletos");
             }
             ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "UsuarioId", "Email", relatorio.UsuarioId);
             return View(relatorio);

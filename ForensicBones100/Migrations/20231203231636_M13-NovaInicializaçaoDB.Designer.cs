@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForensicBones100.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231130222333_M02-Estimativa")]
-    partial class M02Estimativa
+    [Migration("20231203231636_M13-NovaInicializaçaoDB")]
+    partial class M13NovaInicializaçaoDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,7 +86,7 @@ namespace ForensicBones100.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("nvarchar(45)");
 
-                    b.Property<int>("InventarioEsqueletoId")
+                    b.Property<int?>("InventarioEsqueletoId")
                         .HasColumnType("int");
 
                     b.Property<int>("LacrimalDireito")
@@ -156,6 +156,9 @@ namespace ForensicBones100.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("nvarchar(45)");
 
+                    b.Property<int>("RelatorioCranioId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TemporalDireito")
                         .HasColumnType("int");
 
@@ -194,6 +197,8 @@ namespace ForensicBones100.Migrations
                     b.HasKey("InventarioCranioId");
 
                     b.HasIndex("InventarioEsqueletoId");
+
+                    b.HasIndex("RelatorioCranioId");
 
                     b.ToTable("InventarioCranio");
                 });
@@ -248,7 +253,7 @@ namespace ForensicBones100.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int>("InventarioCranioId")
+                    b.Property<int?>("InventarioCranioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Observacoes")
@@ -259,7 +264,7 @@ namespace ForensicBones100.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int?>("RelatorioId")
+                    b.Property<int>("RelatorioMarcadoresId")
                         .HasColumnType("int");
 
                     b.Property<string>("SupraOrbital")
@@ -270,7 +275,7 @@ namespace ForensicBones100.Migrations
 
                     b.HasIndex("InventarioCranioId");
 
-                    b.HasIndex("RelatorioId");
+                    b.HasIndex("RelatorioMarcadoresId");
 
                     b.ToTable("MarcadoresCranio");
                 });
@@ -339,13 +344,17 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.InventarioCranio", b =>
                 {
-                    b.HasOne("ForensicBones100.Models.InventarioEsqueleto", "InventarioEsqueleto")
+                    b.HasOne("ForensicBones100.Models.InventarioEsqueleto", null)
                         .WithMany("InventarioCranio")
-                        .HasForeignKey("InventarioEsqueletoId")
+                        .HasForeignKey("InventarioEsqueletoId");
+
+                    b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
+                        .WithMany("InventarioCranio")
+                        .HasForeignKey("RelatorioCranioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("InventarioEsqueleto");
+                    b.Navigation("Relatorio");
                 });
 
             modelBuilder.Entity("ForensicBones100.Models.InventarioEsqueleto", b =>
@@ -361,17 +370,17 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.MarcadoresCranio", b =>
                 {
-                    b.HasOne("ForensicBones100.Models.InventarioCranio", "InventarioCranio")
+                    b.HasOne("ForensicBones100.Models.InventarioCranio", null)
                         .WithMany("MarcadoresCranio")
-                        .HasForeignKey("InventarioCranioId")
+                        .HasForeignKey("InventarioCranioId");
+
+                    b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
+                        .WithMany("MarcadoresCranio")
+                        .HasForeignKey("RelatorioMarcadoresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ForensicBones100.Models.Relatorio", null)
-                        .WithMany("MarcadoresCranio")
-                        .HasForeignKey("RelatorioId");
-
-                    b.Navigation("InventarioCranio");
+                    b.Navigation("Relatorio");
                 });
 
             modelBuilder.Entity("ForensicBones100.Models.Relatorio", b =>
@@ -397,6 +406,8 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.Relatorio", b =>
                 {
+                    b.Navigation("InventarioCranio");
+
                     b.Navigation("InventariosEsqueleto");
 
                     b.Navigation("MarcadoresCranio");

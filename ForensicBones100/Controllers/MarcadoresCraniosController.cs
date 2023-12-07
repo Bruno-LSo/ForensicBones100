@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ForensicBones100.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ForensicBones100.Controllers
 {
+    [Authorize]
     public class MarcadoresCraniosController : Controller
     {
         private readonly AppDbContext _context;
@@ -21,7 +23,7 @@ namespace ForensicBones100.Controllers
         // GET: MarcadoresCranios
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.MarcadoresCranio.Include(m => m.InventarioCranio);
+            var appDbContext = _context.MarcadoresCranios.Include(m => m.Relatorio);
             return View(await appDbContext.ToListAsync());
         }
 
@@ -33,8 +35,8 @@ namespace ForensicBones100.Controllers
                 return NotFound();
             }
 
-            var marcadoresCranio = await _context.MarcadoresCranio
-                .Include(m => m.InventarioCranio)
+            var marcadoresCranio = await _context.MarcadoresCranios
+                .Include(m => m.Relatorio)
                 .FirstOrDefaultAsync(m => m.MarcadoresCranioId == id);
             if (marcadoresCranio == null)
             {
@@ -47,7 +49,7 @@ namespace ForensicBones100.Controllers
         // GET: MarcadoresCranios/Create
         public IActionResult Create()
         {
-            ViewData["InventarioCranioId"] = new SelectList(_context.InventarioCranio, "InventarioCranioId", "InventarioCranioId");
+            ViewData["RelatorioMarcadoresId"] = new SelectList(_context.Relatorios, "RelatorioId", "Codigo");
             return View();
         }
 
@@ -56,7 +58,8 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MarcadoresCranioId,InventarioCranioId,CristaNucal,ProcessoMastoide,EminenciaMentoniana,SupraOrbital,AreaGlabela,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
+        public async Task<IActionResult> Create([Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,CristaNucalDesc,ProcessoMastoide,ProcessoMastoideDesc," +
+            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo")] MarcadoresCranio marcadoresCranio)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +67,7 @@ namespace ForensicBones100.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InventarioCranioId"] = new SelectList(_context.InventarioCranio, "InventarioCranioId", "InventarioCranioId", marcadoresCranio.InventarioCranioId);
+            ViewData["RelatorioMarcadoresId"] = new SelectList(_context.Relatorios, "RelatorioId", "Codigo", marcadoresCranio.RelatorioMarcadoresId);
             return View(marcadoresCranio);
         }
 
@@ -76,12 +79,12 @@ namespace ForensicBones100.Controllers
                 return NotFound();
             }
 
-            var marcadoresCranio = await _context.MarcadoresCranio.FindAsync(id);
+            var marcadoresCranio = await _context.MarcadoresCranios.FindAsync(id);
             if (marcadoresCranio == null)
             {
                 return NotFound();
             }
-            ViewData["InventarioCranioId"] = new SelectList(_context.InventarioCranio, "InventarioCranioId", "InventarioCranioId", marcadoresCranio.InventarioCranioId);
+            ViewData["RelatorioMarcadoresId"] = new SelectList(_context.Relatorios, "RelatorioId", "Codigo", marcadoresCranio.RelatorioMarcadoresId);
             return View(marcadoresCranio);
         }
 
@@ -90,7 +93,8 @@ namespace ForensicBones100.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MarcadoresCranioId,InventarioCranioId,CristaNucal,ProcessoMastoide,EminenciaMentoniana,SupraOrbital,AreaGlabela,CalculoEstimativaSexo,Observacoes")] MarcadoresCranio marcadoresCranio)
+        public async Task<IActionResult> Edit(int id, [Bind("MarcadoresCranioId,RelatorioMarcadoresId,CristaNucal,CristaNucalDesc,ProcessoMastoide,ProcessoMastoideDesc," +
+            "EminenciaMentoniana,EminenciaMentonianaDesc,SupraOrbital,SupraOrbitalDesc,AreaGlabela,AreaGlabelaDesc,CalculoEstimativaSexo")] MarcadoresCranio marcadoresCranio)
         {
             if (id != marcadoresCranio.MarcadoresCranioId)
             {
@@ -117,7 +121,7 @@ namespace ForensicBones100.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InventarioCranioId"] = new SelectList(_context.InventarioCranio, "InventarioCranioId", "InventarioCranioId", marcadoresCranio.InventarioCranioId);
+            ViewData["RelatorioMarcadoresId"] = new SelectList(_context.Relatorios, "RelatorioId", "Codigo", marcadoresCranio.RelatorioMarcadoresId);
             return View(marcadoresCranio);
         }
 
@@ -129,8 +133,8 @@ namespace ForensicBones100.Controllers
                 return NotFound();
             }
 
-            var marcadoresCranio = await _context.MarcadoresCranio
-                .Include(m => m.InventarioCranio)
+            var marcadoresCranio = await _context.MarcadoresCranios
+                .Include(m => m.Relatorio)
                 .FirstOrDefaultAsync(m => m.MarcadoresCranioId == id);
             if (marcadoresCranio == null)
             {
@@ -145,10 +149,10 @@ namespace ForensicBones100.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var marcadoresCranio = await _context.MarcadoresCranio.FindAsync(id);
+            var marcadoresCranio = await _context.MarcadoresCranios.FindAsync(id);
             if (marcadoresCranio != null)
             {
-                _context.MarcadoresCranio.Remove(marcadoresCranio);
+                _context.MarcadoresCranios.Remove(marcadoresCranio);
             }
 
             await _context.SaveChangesAsync();
@@ -157,7 +161,45 @@ namespace ForensicBones100.Controllers
 
         private bool MarcadoresCranioExists(int id)
         {
-            return _context.MarcadoresCranio.Any(e => e.MarcadoresCranioId == id);
+            return _context.MarcadoresCranios.Any(e => e.MarcadoresCranioId == id);
         }
+
+        //calcula o sexo estimado
+
+        [HttpPost]
+        public IActionResult EstimarSexoAjax([FromBody] List<string> respostas)
+        {
+            // Conte a ocorrência de cada resposta
+            var contagemMasculino = respostas.Count(r => r == "M");
+            var contagemFeminino = respostas.Count(r => r == "F");
+            var contagemInconclusivo = respostas.Count(r => r == "I");
+
+            // Determine a resposta mais frequente
+            var resultado = DeterminarResultado(contagemMasculino, contagemFeminino, contagemInconclusivo);
+
+            // Retorne o resultado como JSON
+            return Json(resultado);
+        }
+
+        private string DeterminarResultado(int contagemM, int contagemF, int contagemI)
+        {
+            // Implemente a lógica para determinar o resultado aqui
+            // (use a lógica que você preferir)
+            // Exemplo simples: retorne o valor mais frequente
+            if (contagemM > contagemF && contagemM >= contagemI)
+            {
+                return "M";
+            }
+            else if (contagemF > contagemM && contagemF >= contagemI)
+            {
+                return "F";
+            }
+            else
+            {
+                return "I";
+            }
+        }
+
     }
 }
+

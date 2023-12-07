@@ -11,105 +11,136 @@ namespace ForensicBones100.Models
         public int InventarioCranioId { get; set; }
 
         [Required]
-        public int InventarioEsqueletoId { get; set; }
+        [Display(Name = "Código do Relatório")]
+        public int RelatorioCranioId { get; set; }
 
         public int Frontal { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Descrição")]
         public string FrontalDesc { get; set; }
 
         public int Ocipital { get; set; }
-        [StringLength(45)]
+        [Display(Name = "Observações")]
         public string OcipitalDesc { get; set; }
 
         public int Esfenoide { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string EsfenoideDesc { get; set; }
 
         public int Maxilar { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string MaxilarDesc { get; set; }
 
         public int Vomer { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string VomerDesc { get; set; }
 
+        [Display(Name = "Parietal Esquerdo")]
         public int ParietalEsquerdo { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string ParietalEsquerdoDesc { get; set; }
 
+        [Display(Name = "Temporal Esquerdo")]
         public int TemporalEsquerdo { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string TemporalEsquerdoDesc { get; set; }
 
+        [Display(Name = "Concha Nasal Inferior Esquerda")]
         public int ConchaNasalInferiorEsquerda { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string ConchaNasalInferiorEsquerdaDesc { get; set; }
 
         public int Etmoide { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string EtmoideDesc { get; set; }
 
+        [Display(Name = "Lacrimal Esquerdo")]
         public int LacrimalEsquerdo { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string LacrimalEsquerdoDesc { get; set; }
 
+        [Display(Name = "Nasal Esquerdo")]
         public int NasalEsquerdo { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string NasalEsquerdoDesc { get; set; }
 
+        [Display(Name = "Zigomático Esquerdo")]
         public int ZigomaticoEsquerdo { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string ZigomaticoEsquerdoDesc { get; set; }
 
+        [Display(Name = "Parietal Direito")]
         public int ParietalDireito { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string ParietalDireitoDesc { get; set; }
 
+        [Display(Name = "Temporal Direito")]
         public int TemporalDireito { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string TemporalDireitoDesc { get; set; }
 
+        [Display(Name = "Concha Nasal Inferior Direita")]
         public int ConchaNasalInferiorDireita { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string ConchaNasalInferiorDireitaDesc { get; set; }
 
+        [Display(Name = "Lacrimal Direito")]
         public int LacrimalDireito { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string LacrimalDireitoDesc { get; set; }
 
+        [Display(Name = "Nasal Direito")]
         public int NasalDireito { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string NasalDireitoDesc { get; set; }
 
+        [Display(Name = "Zigomático Direito")]
         public int ZigomaticoDireito { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string ZigomaticoDireitoDesc { get; set; }
 
         public int Hioide { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string HioideDesc { get; set; }
 
+        [Display(Name = "Cartilagem da Tireoide")]
         public int CartilagemTireoide { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string CartilagemTireoideDesc { get; set; }
 
+        [Display(Name = "Mandíbula")]
         public int Mandibula { get; set; }
-        [StringLength(45)]
+
+        [Display(Name = "Observações")]
         public string MandibulaDesc { get; set; }
 
-        [StringLength(45)]
+        [Display(Name = "Observações Gerais")]
         public string Observacoes { get; set; }
 
-        [StringLength(45)]
+        [Display(Name = "Fotos do Crânio")]
         public string FotosCranio { get; set; }
 
         // Relação com a entidade Relatorio
-        [ForeignKey("RelatorioId")]
+        [ForeignKey("RelatorioCranioId")]
         public virtual Relatorio Relatorio { get; set; }
-
-        // Relação com a entidade InventarioEsqueleto
-        [ForeignKey("InventarioEsqueletoId")]
-        public virtual InventarioEsqueleto InventarioEsqueleto { get; set; }
         public virtual List<MarcadoresCranio> MarcadoresCranio { get; set; }
 
     }

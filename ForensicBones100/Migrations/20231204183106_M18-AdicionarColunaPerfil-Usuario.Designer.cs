@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForensicBones100.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231130223454_M03")]
-    partial class M03
+    [Migration("20231204183106_M18-AdicionarColunaPerfil-Usuario")]
+    partial class M18AdicionarColunaPerfilUsuario
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,8 +69,7 @@ namespace ForensicBones100.Migrations
                         .HasColumnType("nvarchar(45)");
 
                     b.Property<string>("FotosCranio")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Frontal")
                         .HasColumnType("int");
@@ -86,7 +85,7 @@ namespace ForensicBones100.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("nvarchar(45)");
 
-                    b.Property<int>("InventarioEsqueletoId")
+                    b.Property<int?>("InventarioEsqueletoId")
                         .HasColumnType("int");
 
                     b.Property<int>("LacrimalDireito")
@@ -132,8 +131,7 @@ namespace ForensicBones100.Migrations
                         .HasColumnType("nvarchar(45)");
 
                     b.Property<string>("Observacoes")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Ocipital")
                         .HasColumnType("int");
@@ -156,7 +154,7 @@ namespace ForensicBones100.Migrations
                         .HasMaxLength(45)
                         .HasColumnType("nvarchar(45)");
 
-                    b.Property<int?>("RelatorioId")
+                    b.Property<int>("RelatorioCranioId")
                         .HasColumnType("int");
 
                     b.Property<int>("TemporalDireito")
@@ -198,7 +196,7 @@ namespace ForensicBones100.Migrations
 
                     b.HasIndex("InventarioEsqueletoId");
 
-                    b.HasIndex("RelatorioId");
+                    b.HasIndex("RelatorioCranioId");
 
                     b.ToTable("InventarioCranio");
                 });
@@ -216,8 +214,7 @@ namespace ForensicBones100.Migrations
                         .HasColumnType("nvarchar(45)");
 
                     b.Property<string>("ObservacoesEsq")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RelatorioId")
                         .HasColumnType("int");
@@ -253,18 +250,17 @@ namespace ForensicBones100.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int>("InventarioCranioId")
+                    b.Property<int?>("InventarioCranioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Observacoes")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProcessoMastoide")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int?>("RelatorioId")
+                    b.Property<int>("RelatorioMarcadoresId")
                         .HasColumnType("int");
 
                     b.Property<string>("SupraOrbital")
@@ -275,7 +271,7 @@ namespace ForensicBones100.Migrations
 
                     b.HasIndex("InventarioCranioId");
 
-                    b.HasIndex("RelatorioId");
+                    b.HasIndex("RelatorioMarcadoresId");
 
                     b.ToTable("MarcadoresCranio");
                 });
@@ -290,15 +286,13 @@ namespace ForensicBones100.Migrations
 
                     b.Property<string>("Codigo")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Observacoes")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");
@@ -319,23 +313,22 @@ namespace ForensicBones100.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
 
                     b.Property<string>("Cargo")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UsuarioId");
 
@@ -344,17 +337,15 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.InventarioCranio", b =>
                 {
-                    b.HasOne("ForensicBones100.Models.InventarioEsqueleto", "InventarioEsqueleto")
+                    b.HasOne("ForensicBones100.Models.InventarioEsqueleto", null)
                         .WithMany("InventarioCranio")
-                        .HasForeignKey("InventarioEsqueletoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InventarioEsqueletoId");
 
                     b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
                         .WithMany("InventarioCranio")
-                        .HasForeignKey("RelatorioId");
-
-                    b.Navigation("InventarioEsqueleto");
+                        .HasForeignKey("RelatorioCranioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Relatorio");
                 });
@@ -372,17 +363,15 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.MarcadoresCranio", b =>
                 {
-                    b.HasOne("ForensicBones100.Models.InventarioCranio", "InventarioCranio")
+                    b.HasOne("ForensicBones100.Models.InventarioCranio", null)
                         .WithMany("MarcadoresCranio")
-                        .HasForeignKey("InventarioCranioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InventarioCranioId");
 
                     b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
                         .WithMany("MarcadoresCranio")
-                        .HasForeignKey("RelatorioId");
-
-                    b.Navigation("InventarioCranio");
+                        .HasForeignKey("RelatorioMarcadoresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Relatorio");
                 });

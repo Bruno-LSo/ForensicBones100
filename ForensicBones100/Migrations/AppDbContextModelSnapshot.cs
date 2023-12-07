@@ -34,168 +34,145 @@ namespace ForensicBones100.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CartilagemTireoideDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ConchaNasalInferiorDireita")
                         .HasColumnType("int");
 
                     b.Property<string>("ConchaNasalInferiorDireitaDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ConchaNasalInferiorEsquerda")
                         .HasColumnType("int");
 
                     b.Property<string>("ConchaNasalInferiorEsquerdaDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Esfenoide")
                         .HasColumnType("int");
 
                     b.Property<string>("EsfenoideDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Etmoide")
                         .HasColumnType("int");
 
                     b.Property<string>("EtmoideDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FotosCranio")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Frontal")
                         .HasColumnType("int");
 
                     b.Property<string>("FrontalDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Hioide")
                         .HasColumnType("int");
 
                     b.Property<string>("HioideDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("InventarioEsqueletoId")
+                    b.Property<int?>("InventarioEsqueletoId")
                         .HasColumnType("int");
 
                     b.Property<int>("LacrimalDireito")
                         .HasColumnType("int");
 
                     b.Property<string>("LacrimalDireitoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LacrimalEsquerdo")
                         .HasColumnType("int");
 
                     b.Property<string>("LacrimalEsquerdoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Mandibula")
                         .HasColumnType("int");
 
                     b.Property<string>("MandibulaDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Maxilar")
                         .HasColumnType("int");
 
                     b.Property<string>("MaxilarDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NasalDireito")
                         .HasColumnType("int");
 
                     b.Property<string>("NasalDireitoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NasalEsquerdo")
                         .HasColumnType("int");
 
                     b.Property<string>("NasalEsquerdoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Observacoes")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Ocipital")
                         .HasColumnType("int");
 
                     b.Property<string>("OcipitalDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ParietalDireito")
                         .HasColumnType("int");
 
                     b.Property<string>("ParietalDireitoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ParietalEsquerdo")
                         .HasColumnType("int");
 
                     b.Property<string>("ParietalEsquerdoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RelatorioId")
+                    b.Property<int>("RelatorioCranioId")
                         .HasColumnType("int");
 
                     b.Property<int>("TemporalDireito")
                         .HasColumnType("int");
 
                     b.Property<string>("TemporalDireitoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TemporalEsquerdo")
                         .HasColumnType("int");
 
                     b.Property<string>("TemporalEsquerdoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Vomer")
                         .HasColumnType("int");
 
                     b.Property<string>("VomerDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ZigomaticoDireito")
                         .HasColumnType("int");
 
                     b.Property<string>("ZigomaticoDireitoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ZigomaticoEsquerdo")
                         .HasColumnType("int");
 
                     b.Property<string>("ZigomaticoEsquerdoDesc")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("InventarioCranioId");
 
                     b.HasIndex("InventarioEsqueletoId");
 
-                    b.HasIndex("RelatorioId");
+                    b.HasIndex("RelatorioCranioId");
 
                     b.ToTable("InventarioCranio");
                 });
@@ -209,12 +186,10 @@ namespace ForensicBones100.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InventarioEsqueletoId"));
 
                     b.Property<string>("FotoEsqueleto")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ObservacoesEsq")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RelatorioId")
                         .HasColumnType("int");
@@ -238,41 +213,54 @@ namespace ForensicBones100.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
+                    b.Property<string>("AreaGlabelaDesc")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CalculoEstimativaSexo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CristaNucal")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
+                    b.Property<string>("CristaNucalDesc")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("EminenciaMentoniana")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int>("InventarioCranioId")
+                    b.Property<string>("EminenciaMentonianaDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("InventarioCranioId")
                         .HasColumnType("int");
 
                     b.Property<string>("Observacoes")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProcessoMastoide")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int?>("RelatorioId")
+                    b.Property<string>("ProcessoMastoideDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RelatorioMarcadoresId")
                         .HasColumnType("int");
 
                     b.Property<string>("SupraOrbital")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
+                    b.Property<string>("SupraOrbitalDesc")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("MarcadoresCranioId");
 
                     b.HasIndex("InventarioCranioId");
 
-                    b.HasIndex("RelatorioId");
+                    b.HasIndex("RelatorioMarcadoresId");
 
                     b.ToTable("MarcadoresCranio");
                 });
@@ -287,15 +275,13 @@ namespace ForensicBones100.Migrations
 
                     b.Property<string>("Codigo")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Observacoes")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");
@@ -316,23 +302,22 @@ namespace ForensicBones100.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UsuarioId"));
 
                     b.Property<string>("Cargo")
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Perfil")
+                        .HasColumnType("int");
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasMaxLength(45)
-                        .HasColumnType("nvarchar(45)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UsuarioId");
 
@@ -341,17 +326,15 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.InventarioCranio", b =>
                 {
-                    b.HasOne("ForensicBones100.Models.InventarioEsqueleto", "InventarioEsqueleto")
+                    b.HasOne("ForensicBones100.Models.InventarioEsqueleto", null)
                         .WithMany("InventarioCranio")
-                        .HasForeignKey("InventarioEsqueletoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InventarioEsqueletoId");
 
                     b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
                         .WithMany("InventarioCranio")
-                        .HasForeignKey("RelatorioId");
-
-                    b.Navigation("InventarioEsqueleto");
+                        .HasForeignKey("RelatorioCranioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Relatorio");
                 });
@@ -369,17 +352,15 @@ namespace ForensicBones100.Migrations
 
             modelBuilder.Entity("ForensicBones100.Models.MarcadoresCranio", b =>
                 {
-                    b.HasOne("ForensicBones100.Models.InventarioCranio", "InventarioCranio")
+                    b.HasOne("ForensicBones100.Models.InventarioCranio", null)
                         .WithMany("MarcadoresCranio")
-                        .HasForeignKey("InventarioCranioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InventarioCranioId");
 
                     b.HasOne("ForensicBones100.Models.Relatorio", "Relatorio")
                         .WithMany("MarcadoresCranio")
-                        .HasForeignKey("RelatorioId");
-
-                    b.Navigation("InventarioCranio");
+                        .HasForeignKey("RelatorioMarcadoresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Relatorio");
                 });

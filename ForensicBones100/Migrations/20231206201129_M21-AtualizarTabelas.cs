@@ -5,7 +5,7 @@
 namespace ForensicBones100.Migrations
 {
     /// <inheritdoc />
-    public partial class M04BD : Migration
+    public partial class M21AtualizarTabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ForensicBones100.Migrations
 {
     /// <inheritdoc />
-    public partial class M01 : Migration
+    public partial class M13NovaInicializaçaoDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -76,7 +76,7 @@ namespace ForensicBones100.Migrations
                 {
                     InventarioCranioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    InventarioEsqueletoId = table.Column<int>(type: "int", nullable: false),
+                    RelatorioCranioId = table.Column<int>(type: "int", nullable: false),
                     Frontal = table.Column<int>(type: "int", nullable: false),
                     FrontalDesc = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: true),
                     Ocipital = table.Column<int>(type: "int", nullable: false),
@@ -120,7 +120,8 @@ namespace ForensicBones100.Migrations
                     Mandibula = table.Column<int>(type: "int", nullable: false),
                     MandibulaDesc = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: true),
                     Observacoes = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: true),
-                    FotosCranio = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: true)
+                    FotosCranio = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: true),
+                    InventarioEsqueletoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,7 +130,12 @@ namespace ForensicBones100.Migrations
                         name: "FK_InventarioCranio_InventariosEsqueleto_InventarioEsqueletoId",
                         column: x => x.InventarioEsqueletoId,
                         principalTable: "InventariosEsqueleto",
-                        principalColumn: "InventarioEsqueletoId",
+                        principalColumn: "InventarioEsqueletoId");
+                    table.ForeignKey(
+                        name: "FK_InventarioCranio_Relatorios_RelatorioCranioId",
+                        column: x => x.RelatorioCranioId,
+                        principalTable: "Relatorios",
+                        principalColumn: "RelatorioId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -139,14 +145,15 @@ namespace ForensicBones100.Migrations
                 {
                     MarcadoresCranioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    InventarioCranioId = table.Column<int>(type: "int", nullable: false),
+                    RelatorioMarcadoresId = table.Column<int>(type: "int", nullable: false),
                     CristaNucal = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     ProcessoMastoide = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     EminenciaMentoniana = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     SupraOrbital = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     AreaGlabela = table.Column<string>(type: "nvarchar(1)", nullable: false),
+                    CalculoEstimativaSexo = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     Observacoes = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: true),
-                    RelatorioId = table.Column<int>(type: "int", nullable: true)
+                    InventarioCranioId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -155,19 +162,24 @@ namespace ForensicBones100.Migrations
                         name: "FK_MarcadoresCranio_InventarioCranio_InventarioCranioId",
                         column: x => x.InventarioCranioId,
                         principalTable: "InventarioCranio",
-                        principalColumn: "InventarioCranioId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "InventarioCranioId");
                     table.ForeignKey(
-                        name: "FK_MarcadoresCranio_Relatorios_RelatorioId",
-                        column: x => x.RelatorioId,
+                        name: "FK_MarcadoresCranio_Relatorios_RelatorioMarcadoresId",
+                        column: x => x.RelatorioMarcadoresId,
                         principalTable: "Relatorios",
-                        principalColumn: "RelatorioId");
+                        principalColumn: "RelatorioId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_InventarioCranio_InventarioEsqueletoId",
                 table: "InventarioCranio",
                 column: "InventarioEsqueletoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InventarioCranio_RelatorioCranioId",
+                table: "InventarioCranio",
+                column: "RelatorioCranioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InventariosEsqueleto_RelatorioId",
@@ -180,9 +192,9 @@ namespace ForensicBones100.Migrations
                 column: "InventarioCranioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MarcadoresCranio_RelatorioId",
+                name: "IX_MarcadoresCranio_RelatorioMarcadoresId",
                 table: "MarcadoresCranio",
-                column: "RelatorioId");
+                column: "RelatorioMarcadoresId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Relatorios_UsuarioId",
