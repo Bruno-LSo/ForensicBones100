@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<form asp-action="Create">
+<form asp-action="Edit">
     <div class="card text-center d-flex mx-auto m-5 col-lg-8 col-md-12 col-sm-12">
         <div class="card-header">
             <h3>Estimativa de Sexo</h3>
@@ -52,10 +52,10 @@
                             </fieldset>
                         </div>
                         <!-- Observações -->
-                        <fieldset class="Observacoes text-center" style="width: 100%;">
+                        <fieldset class="CristaNucalDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="Observacoes" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="CristaNucalDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -97,10 +97,10 @@
                             </fieldset>
                         </div>
                         <!-- Observações -->
-                        <fieldset class="Observacoes text-center" style="width: 100%;">
+                        <fieldset class="ProcessoMastoideDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="Observacoes" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="ProcessoMastoideDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -142,10 +142,10 @@
                             </fieldset>
                         </div>
                         <!-- Observações -->
-                        <fieldset class="Observacoes text-center" style="width: 100%;">
+                        <fieldset class="EminenciaMentonianaDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="Observacoes" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="EminenciaMentonianaDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -187,10 +187,10 @@
                             </fieldset>
                         </div>
                         <!-- Observações -->
-                        <fieldset class="Observacoes text-center" style="width: 100%;">
+                        <fieldset class="AreaGlabelaDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="Observacoes" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="AreaGlabelaDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -232,10 +232,10 @@
                             </fieldset>
                         </div>
                         <!-- Observações -->
-                        <fieldset class="Observacoes text-center" style="width: 100%;">
+                        <fieldset class="SupraOrbitalDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="Observacoes" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="SupraOrbitalDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -265,7 +265,7 @@
 
             <input type="hidden" />
             <a asp-action="Index" class="btn btn-secondary me-1" id="cancelDelete" data-bs-toggle="tooltip" data-bs-placement="top" title="Cancelar">Estimativas</a>
-            <button type="submit" class="btn custom-button-card" value="Edit" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">Alterar/button>
+            <button type="submit" class="btn custom-button-card" value="Edit" id="createItem" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">Alterar</button>
 
         </div>
     </div>
