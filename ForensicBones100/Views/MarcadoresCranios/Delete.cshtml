@@ -9,13 +9,10 @@
         <div class="card-header">
             <h3>Estimativa de Sexo</h3>
             <h5>Análise Antroposcópica do Crânio</h5>
-        </div>
-        <div class="form-group col-2 m-3">
-            <label class="control-label">Relatório</label>
-            <select asp-for="MarcadoresCranioId" class="form-control text-center" asp-items="ViewBag.InventarioCranioId"></select>
+            Relatório: <b>@Html.DisplayFor(modelItem => Model.Relatorio.Codigo)</b>
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
             <!--Crista Nucal-->
             <div class="col-12 col-lg-6 mb-3">
                 <div class="card text-center d-flex" style="height: 220px;">
@@ -43,7 +40,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="CristaNucal" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="CristaNucal" class="form-select text-center" aria-label="Default select example" readonly>
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -55,7 +52,7 @@
                         <fieldset class="CristaNucalDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="CristaNucalDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="CristaNucalDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2" readonly></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -88,7 +85,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="ProcessoMastoide" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="ProcessoMastoide" class="form-select text-center" aria-label="Default select example" readonly>
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -100,7 +97,7 @@
                         <fieldset class="ProcessoMastoideDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="ProcessoMastoideDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="ProcessoMastoideDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2" readonly></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -133,7 +130,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="EminenciaMentoniana" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="EminenciaMentoniana" class="form-select text-center" aria-label="Default select example" readonly>
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -145,7 +142,7 @@
                         <fieldset class="EminenciaMentonianaDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="EminenciaMentonianaDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="EminenciaMentonianaDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2" readonly></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -178,7 +175,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="AreaGlabela" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="AreaGlabela" class="form-select text-center" aria-label="Default select example" readonly>
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -190,7 +187,7 @@
                         <fieldset class="AreaGlabelaDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="AreaGlabelaDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="AreaGlabelaDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2" readonly></textarea>
                             </div>
                         </fieldset>
                     </div>
@@ -223,7 +220,7 @@
                             <!-- Sexo -->
                             <fieldset class="Sexo text-center me-3">
                                 <legend style="font-size: small">Sexo</legend>
-                                <select asp-for="SupraOrbital" class="form-select text-center" aria-label="Default select example">
+                                <select asp-for="SupraOrbital" class="form-select text-center" aria-label="Default select example" readonly>
                                     <option selected>Estimar</option>
                                     <option value="M">Masculino</option>
                                     <option value="F">Feminino</option>
@@ -235,7 +232,7 @@
                         <fieldset class="SupraOrbitalDesc text-center" style="width: 100%;">
                             <legend style="font-size: small">Observações</legend>
                             <div class="form-group text-center">
-                                <textarea class="form-control" asp-for="SupraOrbitalDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2"></textarea>
+                                <textarea class="form-control" asp-for="SupraOrbitalDesc" placeholder="Deixe um comentário" style="font-size: small" id="floatingTextarea2" readonly></textarea>
                             </div>
                         </fieldset>
                     </div>

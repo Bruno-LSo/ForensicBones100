@@ -10,7 +10,7 @@
 <hr />
 <div class="card text-center d-flex mx-auto col-lg-5 col-md-9 col-sm-8 m-5">
     <div class="card-content">
-        <div class="card-header"><h5 class="card-title" id="">Alterar Inventário do Esqueleto</h5></div>
+        <div class="card-header"><h5 class="card-title" id="">Alterar Inventário do Esqueleto</h5>Relatório: <b>@Html.DisplayFor(modelItem => Model.Relatorio.Codigo)</b></div>
 
     </div>
 
@@ -18,15 +18,6 @@
         <form id="cardForm" asp-action="Delete" Class="text">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group mb-3 col-6 mx-auto">
-                <label asp-for="RelatorioId" class="control-label"></label>
-                <select asp-for="RelatorioId" class="form-control text-center" asp-items="ViewBag.RelatorioId" readonly></select>
-            </div>
-            <div class="form-group mb-3 col-6 mx-auto">
-                <label asp-for="RelatorioId" class="control-label"></label>
-                <input asp-for="RelatorioId" class="form-control text-center" readonly />
-                <span asp-validation-for="RelatorioId" class="text-danger"></span>
-            </div>
             <div class="form-group mb-3 col-6 mx-auto">
                 <label asp-for="FotoEsqueleto" class="control-label"></label>
                 <input asp-for="FotoEsqueleto" class="form-control text-center" readonly />
